@@ -11,12 +11,14 @@ import { AppEffects } from './app.effects';
 import { UsersComponent } from './user/users/users.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { TodosComponent } from './todos/todos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    NavbarComponent
+    NavbarComponent,
+    TodosComponent
   ],
   imports: [
     BrowserModule,
