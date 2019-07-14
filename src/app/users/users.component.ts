@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store';
-import * as userActions from '../user.actions';
-import * as todoActions from '../../todo/todo.actions';
-import {User} from '../user.model';
+import * as userActions from './store/user.actions';
+import * as todoActions from '../todos/store/todo.actions';
+import {User} from './store/user.model';
 
 @Component({
   selector: 'app-users',
@@ -22,8 +22,8 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const user: User = {id: '1', name: 'Alex'};
-    // this.store.dispatch(todoActions.addTodo({todo: {id: '1', description: 'Test', assignee: user}}));
+    // const users: User = {id: '1', name: 'Alex'};
+    // this.store.dispatch(todoActions.addTodo({todo: {id: '1', description: 'Test', assignee: users}}));
   }
 
   updateList(id: number, property: string, event: any) {
