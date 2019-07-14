@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import * as userActions from './store/user.actions';
 import * as todoActions from '../todos/store/todo.actions';
+import * as fromUser from '../users/store/user.selectors';
 import {User} from './store/user.model';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -12,31 +14,30 @@ import {User} from './store/user.model';
 export class UsersComponent implements OnInit {
 
   editField: string;
-  personList: Array<any> = [
-    { id: 1, name: 'Aurelia Vega', age: 30, companyName: 'Deepends', country: 'Spain', city: 'Madrid' },
-    { id: 2, name: 'Guerra Cortez', age: 45, companyName: 'Insectus', country: 'USA', city: 'San Francisco' },
-    { id: 3, name: 'Guadalupe House', age: 26, companyName: 'Isotronic', country: 'Germany', city: 'Frankfurt am Main' }
-  ];
+  userList$: Observable<Array<User>>;
+  userList: Array<User> = [];
 
   constructor(private store: Store<any>) {
+    /*this.userList$.subscribe(users => {
+      this.userList = users;
+    });*/
   }
 
   ngOnInit() {
-    // const users: User = {id: '1', name: 'Alex'};
-    // this.store.dispatch(todoActions.addTodo({todo: {id: '1', description: 'Test', assignee: users}}));
+    this.userList$ = this.store.pipe(select(fromUser.selectAllUsers));
   }
 
   updateList(id: number, property: string, event: any) {
     const editField = event.target.textContent;
-    this.personList[id][property] = editField;
+    // this.personList[id][property] = editField;
   }
 
   remove(id: any) {
-    this.personList.splice(id, 1);
+    alert('It\'s not developed yet :)'); // todo: add remove logic
   }
 
   add() {
-    alert('It\'s not developed yet :)');
+    alert('It\'s not developed yet :)'); // todo: add logic
   }
 
   changeValue(id: number, property: string, event: any) {

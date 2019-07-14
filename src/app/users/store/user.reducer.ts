@@ -1,20 +1,21 @@
-import {Action, createReducer, on} from '@ngrx/store';
+import {Action, createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 import {User} from './user.model';
 import * as UserActions from './user.actions';
 
-export interface State extends EntityState<User> {
+export interface UserState extends EntityState<User> {
   // additional entities state properties
 }
 
 export const adapter: EntityAdapter<User> = createEntityAdapter<User>();
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: UserState = adapter.getInitialState({
   // additional entity state properties
-  ids: [1, 2],
+  ids: [1, 2, 3],
   entities: {
-    1: {id: 1, name: 'Alex'},
-    2: {id: 2, name: 'Sagi'}
+    1: {id: 1, name: 'Aurelia Vega', age: 30, companyName: 'Deepends', country: 'Spain', city: 'Madrid'},
+    2: {id: 2, name: 'Guerra Cortez', age: 45, companyName: 'Insectus', country: 'USA', city: 'San Francisco'},
+    3: {id: 3, name: 'Guadalupe House', age: 26, companyName: 'Isotronic', country: 'Germany', city: 'Frankfurt am Main'}
   }
 });
 
@@ -52,7 +53,7 @@ const userReducer = createReducer(
   ),
 );
 
-export function reducer(state: State | undefined, action: Action) {
+export function reducer(state: UserState | undefined, action: Action) {
   return userReducer(state, action);
 }
 

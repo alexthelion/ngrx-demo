@@ -3,13 +3,13 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Todo } from './todo.model';
 import * as TodoActions from './todo.actions';
 
-export interface State extends EntityState<Todo> {
+export interface TodoState extends EntityState<Todo> {
   // additional entities state properties
 }
 
 export const adapter: EntityAdapter<Todo> = createEntityAdapter<Todo>();
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: TodoState = adapter.getInitialState({
   // additional entity state properties
 });
 
@@ -47,7 +47,7 @@ const todoReducer = createReducer(
   ),
 );
 
-export function reducer(state: State | undefined, action: Action) {
+export function reducer(state: TodoState | undefined, action: Action) {
   return todoReducer(state, action);
 }
 

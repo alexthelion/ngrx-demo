@@ -10,8 +10,8 @@ import * as fromUser from '../users/store/user.reducer';
 import * as fromTodo from '../todos/store/todo.reducer';
 
 export interface State {
-  users: fromUser.State;
-  todos: fromTodo.State;
+  users: fromUser.UserState;
+  todos: fromTodo.TodoState;
 }
 
 export const reducers: ActionReducerMap<State> = {
