@@ -8,3 +8,8 @@ export const selectAllUsers = createSelector(
   selectUserState,
   fromUser.selectAll
 );
+
+export const selectUserById = (userID: string) => createSelector(
+  selectUserState,
+  userState => userState.entities[userID]
+);

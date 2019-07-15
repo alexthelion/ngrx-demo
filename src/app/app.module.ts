@@ -10,20 +10,37 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { UsersComponent } from './users/users.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {
+  MDBBootstrapModule,
+  ModalModule,
+  WavesModule,
+  InputsModule,
+  ButtonsModule,
+  MDBModalService,
+  MDBRootModule, PopoverModule, TooltipModule
+} from 'angular-bootstrap-md';
 import { TodosComponent } from './todos/todos.component';
+import { DialogComponent } from './dialog/dialog.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     NavbarComponent,
-    TodosComponent
+    TodosComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
+    ModalModule,
+    PopoverModule,
+    TooltipModule,
+    WavesModule,
+    InputsModule,
+    ButtonsModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -35,6 +52,7 @@ import { TodosComponent } from './todos/todos.component';
     EffectsModule.forRoot([AppEffects])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: []
 })
 export class AppModule { }
