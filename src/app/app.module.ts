@@ -22,6 +22,7 @@ import { TodosComponent } from './todos/todos.component';
 import { DialogComponent } from './dialog/dialog.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { TodoCardComponent } from './todos/todo-card/todo-card.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     UsersComponent,
     NavbarComponent,
     TodosComponent,
-    DialogComponent
+    DialogComponent,
+    TodoCardComponent
   ],
   imports: [
     BrowserAnimationsModule,

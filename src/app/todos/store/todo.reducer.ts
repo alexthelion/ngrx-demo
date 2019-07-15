@@ -1,6 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Todo } from './todo.model';
+import {Action, createReducer, on} from '@ngrx/store';
+import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
+import {Todo} from './todo.model';
 import * as TodoActions from './todo.actions';
 
 export interface TodoState extends EntityState<Todo> {
@@ -11,6 +11,11 @@ export const adapter: EntityAdapter<Todo> = createEntityAdapter<Todo>();
 
 export const initialState: TodoState = adapter.getInitialState({
   // additional entity state properties
+  ids: [1, 2],
+  entities: {
+    1: {id: 1, title: 'Create login screen', description: 'Use jwt for login screen', assigneeId: '', status: 'backlog'},
+    2: {id: 2, title: 'Create help screen', description: 'Implement generic help screen, which could open from any other screen', assigneeId: '', status: 'open'},
+  }
 });
 
 const todoReducer = createReducer(

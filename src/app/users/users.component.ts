@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
   }
 
   add() {
-    alert('It\'s not developed yet :)'); // todo: add logic
+    alert('It\'s not available yet :)'); // todo: add logic
   }
 
   changeValue(id: string, property: string, event: any) {
