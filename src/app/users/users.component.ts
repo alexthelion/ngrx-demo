@@ -5,7 +5,6 @@ import * as fromUser from '../users/store/user.selectors';
 import {User} from './store/user.model';
 import {Observable} from 'rxjs';
 import {DialogComponent} from '../dialog/dialog.component';
-import {DialogService} from '../dialog/dialog.service';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
@@ -19,7 +18,6 @@ export class UsersComponent implements OnInit {
   @ViewChild('removeDialog', {static: false}) removeDialogComponent: DialogComponent;
 
   constructor(private store: Store<any>,
-              private dialogService: DialogService,
               public dialog: MatDialog) {
   }
 
