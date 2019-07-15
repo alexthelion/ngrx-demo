@@ -37,7 +37,7 @@
             </td>
             <td>
             <span class="table-remove">
-              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(person)">Remove</button>
+              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="openRemoveDialog(person)">Remove</button>
             </span>
             </td>
           </tr>
@@ -46,7 +46,4 @@
     </div>
   </div>
   <!-- Editable table -->
-
-  <app-dialog #removeDialog></app-dialog>
-
 </div>

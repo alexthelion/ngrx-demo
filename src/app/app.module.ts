@@ -12,16 +12,16 @@ import { UsersComponent } from './users/users.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {
   MDBBootstrapModule,
-  ModalModule,
   WavesModule,
   InputsModule,
   ButtonsModule,
-  MDBModalService,
-  MDBRootModule, PopoverModule, TooltipModule
+  PopoverModule,
+  TooltipModule
 } from 'angular-bootstrap-md';
 import { TodosComponent } from './todos/todos.component';
 import { DialogComponent } from './dialog/dialog.component';
-
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,10 +32,11 @@ import { DialogComponent } from './dialog/dialog.component';
     DialogComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    ModalModule,
+    MatDialogModule,
     PopoverModule,
     TooltipModule,
     WavesModule,
@@ -51,8 +52,11 @@ import { DialogComponent } from './dialog/dialog.component';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects])
   ],
-  providers: [],
+  providers: [
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: {} }
+  ],
   bootstrap: [AppComponent],
-  entryComponents: []
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }
