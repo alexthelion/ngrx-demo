@@ -1,0 +1,11 @@
+<mdb-card class="mt-3 mb-3" [ngClass]="getTextColorByStatus()" [bgColor]="getColorByStatus()" style="max-width: 20rem">
+  <mdb-card-header>{{todo.title}}</mdb-card-header>
+  <mdb-card-body>
+    <mdb-card-title>
+      <h5>{{todo.assigneeId}}</h5>
+    </mdb-card-title>
+    <div [ngClass]="getTextColorByStatus()">
+      {{todo.description}}
+    </div>
+  </mdb-card-body>
+</mdb-card>

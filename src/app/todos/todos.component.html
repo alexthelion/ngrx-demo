@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row mt-3">
+    <h1>Todos Board</h1>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-3">
+      <mdb-card>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4>Backlog</h4>
+          </mdb-card-title>
+          <mdb-card-text>
+            <app-todo-card *ngFor="let todo of todosBacklog$ | async" [todo]="todo"></app-todo-card>
+          </mdb-card-text>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+
+    <div class="col-md-3">
+      <mdb-card>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4>Open</h4>
+          </mdb-card-title>
+          <mdb-card-text>
+            <app-todo-card *ngFor="let todo of todosOpen$ | async" [todo]="todo"></app-todo-card>
+          </mdb-card-text>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+
+    <div class="col-md-3">
+      <mdb-card>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4>In Progress</h4>
+          </mdb-card-title>
+          <mdb-card-text>
+            <app-todo-card *ngFor="let todo of todosInProgress$ | async" [todo]="todo"></app-todo-card>
+          </mdb-card-text>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+
+    <div class="col-md-3">
+      <mdb-card>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4>Done</h4>
+          </mdb-card-title>
+          <mdb-card-text>
+            <app-todo-card *ngFor="let todo of todosDone$ | async" [todo]="todo"></app-todo-card>
+          </mdb-card-text>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </div>
+</div>
