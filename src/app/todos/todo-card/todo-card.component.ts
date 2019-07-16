@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Todo} from '../../todo.model';
+import {Todo} from '../../models/todo.model';
 import {MatDialog} from '@angular/material';
 import {TodoInfoComponent} from '../todo-info/todo-info.component';
 import * as fromUser from '../../root-store/users/user.selectors';

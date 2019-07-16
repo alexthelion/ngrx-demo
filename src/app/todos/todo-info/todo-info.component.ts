@@ -4,7 +4,7 @@ import {User} from '../../models/user.model';
 import {select, Store} from '@ngrx/store';
 import * as fromUser from '../../root-store/users/user.selectors';
 import * as todoActions from '../../root-store/todos/todo.actions';
-import {Todo} from '../../todo.model';
+import {Todo} from '../../models/todo.model';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Label} from '../../models/label.model';
 

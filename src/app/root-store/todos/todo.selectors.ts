@@ -1,7 +1,7 @@
 import * as fromTodo from './todo.reducer';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {TodoState} from './todo.reducer';
-import {BACKLOG, DONE, IN_PROGRESS, OPEN} from '../../todo.model';
+import {BACKLOG, DONE, IN_PROGRESS, OPEN} from '../../models/todo.model';
 
 export const selectTodosState = createFeatureSelector<TodoState>('todos');
 
