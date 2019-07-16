@@ -1,10 +1,12 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatChipInputEvent, MatDialogRef} from '@angular/material';
 import {User} from '../../users/store/user.model';
 import {select, Store} from '@ngrx/store';
 import * as fromUser from '../../users/store/user.selectors';
 import * as todoActions from '../store/todo.actions';
 import {Todo} from '../store/todo.model';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {Label} from '../store/label.model';
 
 @Component({
   selector: 'app-todo-info',
@@ -18,6 +20,13 @@ export class TodoInfoComponent implements OnInit {
   selectedUser: User;
   title: string;
   description: string;
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  labels: Label[] = [
+  ];
 
   constructor(public dialogRef: MatDialogRef<any>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -47,5 +56,28 @@ export class TodoInfoComponent implements OnInit {
 
   cancel(): void {
     this.dialogRef.close();
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our label
+    if ((value || '').trim()) {
+      this.labels.push({title: value.trim()});
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  remove(label: Label): void {
+    const index = this.labels.indexOf(label);
+
+    if (index >= 0) {
+      this.labels.splice(index, 1);
+    }
   }
 }

@@ -2,51 +2,76 @@
   <h4 class="text-center">Edit todo #{{data.todo.id}}</h4>
   <div class="md-form">
 
-    <div class="row mt-3">
-      <div class="form-group col-md-12 p-0 m-0">
-        <input mdbInput type="text" id="title" class="form-control" [(ngModel)]="data.todo.title">
-        <label for="title">Title</label>
-      </div>
-    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row mt-3">
+          <div class="form-group col-md-12 p-0 m-0">
+            <input mdbInput type="text" id="title" class="form-control" [(ngModel)]="data.todo.title">
+            <label for="title">Title</label>
+          </div>
+        </div>
 
-    <div class="row mt-3">
-      <div class="form-group col-md-12 p-0 m-0">
+        <div class="row mt-3">
+          <div class="form-group col-md-12 p-0 m-0">
         <textarea mdbInput type="text" id="description" class="md-textarea form-control"
                   [(ngModel)]="data.todo.description"></textarea>
-        <label for="description">Description</label>
+            <label for="description">Description</label>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="form-group col-md-12 p-0 m-0">
+            <mat-form-field>
+              <mat-label>Select an assignee</mat-label>
+              <mat-select [(value)]="selectedUser">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let user of users" [value]="user">{{user.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="form-group col-md-12 p-0 m-0">
+            <mat-form-field>
+              <mat-label>Select status</mat-label>
+              <mat-select [(value)]="selectedStatus">
+                <mat-option>None</mat-option>
+                <mat-option value="backlog">Backlog</mat-option>
+                <mat-option value="open">Open</mat-option>
+                <mat-option value="in_progress">In Progress</mat-option>
+                <mat-option value="done">Done</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row pr-2 pl-2">
+          <mat-form-field class="example-chip-list">
+            <mat-chip-list #chipList aria-label="Labels selection">
+              <mat-chip *ngFor="let label of labels" [selectable]="selectable"
+                        [removable]="removable" (removed)="remove(label)">
+                {{label.title}}
+                <mdb-icon fas icon="times" matChipRemove></mdb-icon>
+              </mat-chip>
+              <input placeholder="New label..."
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
       </div>
     </div>
 
-    <div class="row mt-3">
-      <div class="form-group col-md-12 p-0 m-0">
-        <mat-form-field>
-          <mat-label>Select an assignee</mat-label>
-          <mat-select [(value)]="selectedUser">
-            <mat-option>None</mat-option>
-            <mat-option *ngFor="let user of users" [value]="user">{{user.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
+    <div class="row">
+      <div class="text-center">
+        <button type="button" mdbBtn color="success" mdbWavesEffect (click)="save()">Save</button>
+        <button type="button" mdbBtn color="primary" mdbWavesEffect (click)="cancel()">Cancel</button>
       </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="form-group col-md-12 p-0 m-0">
-        <mat-form-field>
-          <mat-label>Select status</mat-label>
-          <mat-select [(value)]="selectedStatus">
-            <mat-option>None</mat-option>
-            <mat-option value="backlog">Backlog</mat-option>
-            <mat-option value="open">Open</mat-option>
-            <mat-option value="in_progress">In Progress</mat-option>
-            <mat-option value="done">Done</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-
-    <div class="row mt-3">
-      <button type="button" mdbBtn color="success" mdbWavesEffect (click)="save()">Save</button>
-      <button type="button" mdbBtn color="primary" mdbWavesEffect (click)="cancel()">Cancel</button>
     </div>
 
   </div>

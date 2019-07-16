@@ -20,7 +20,7 @@ import {
 } from 'angular-bootstrap-md';
 import { TodosComponent } from './todos/todos.component';
 import { DialogComponent } from './dialog/dialog.component';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatSelectModule} from '@angular/material';
+import {MAT_DIALOG_DATA, MatChipsModule, MatDialogModule, MatDialogRef, MatIconModule, MatSelectModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { TodoCardComponent } from './todos/todo-card/todo-card.component';
 import { TodoInfoComponent } from './todos/todo-info/todo-info.component';
@@ -50,6 +50,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatChipsModule,
+    MatIconModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

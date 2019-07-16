@@ -4,7 +4,6 @@ import {MatDialog} from '@angular/material';
 import {TodoInfoComponent} from '../todo-info/todo-info.component';
 import * as fromUser from '../../users/store/user.selectors';
 import {select, Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
 import {User} from '../../users/store/user.model';
 
 @Component({
@@ -50,7 +49,7 @@ export class TodoCardComponent implements OnInit {
 
   openInfoDialog(): void {
     const dialogRef = this.dialog.open(TodoInfoComponent, {
-      width: '400px',
+      width: '800px',
       data: {todo: this.todo}
     });
   }
