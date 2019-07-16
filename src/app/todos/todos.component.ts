@@ -24,4 +24,8 @@ export class TodosComponent implements OnInit {
   this.todosDone$ = this.store.pipe(select(fromTodos.selectAllDoneTodos));
 }
 
+  openTodoCreationDialog(): void {
+
+  }
+
 }
