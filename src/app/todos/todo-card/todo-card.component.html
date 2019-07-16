@@ -5,7 +5,7 @@
           style="max-width: 20rem">
   <mdb-card-header>{{todo.title}}</mdb-card-header>
   <mdb-card-body>
-    <p *ngIf="!!todo.assigneeId">Alex shimanski <mdb-icon fas icon="user-ninja" size="1x" class="pl-1" aria-hidden="true"></mdb-icon></p>
+    <p *ngIf="!!todo.assigneeId">{{assignedUser.name}} <mdb-icon fas icon="user-ninja" size="1x" class="pl-1" aria-hidden="true"></mdb-icon></p>
     <p *ngIf="!!!todo.assigneeId">Unassigned <mdb-icon fas icon="user" size="1x" class="pl-1" aria-hidden="true"></mdb-icon></p>
     <hr>
     <div [ngClass]="getTextColorByStatus()">

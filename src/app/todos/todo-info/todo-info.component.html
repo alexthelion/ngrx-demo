@@ -23,7 +23,7 @@
           <mat-label>Select an assignee</mat-label>
           <mat-select [(value)]="selectedUser">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let user of users" value="user.id">{{user.name}}</mat-option>
+            <mat-option *ngFor="let user of users" [value]="user">{{user.name}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -45,8 +45,8 @@
     </div>
 
     <div class="row mt-3">
-      <button type="button" mdbBtn color="success" mdbWavesEffect>Save</button>
-      <button type="button" mdbBtn color="primary" mdbWavesEffect>Cancel</button>
+      <button type="button" mdbBtn color="success" mdbWavesEffect (click)="save()">Save</button>
+      <button type="button" mdbBtn color="primary" mdbWavesEffect (click)="cancel()">Cancel</button>
     </div>
 
   </div>

@@ -2,6 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Todo} from '../store/todo.model';
 import {MatDialog} from '@angular/material';
 import {TodoInfoComponent} from '../todo-info/todo-info.component';
+import * as fromUser from '../../users/store/user.selectors';
+import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {User} from '../../users/store/user.model';
 
 @Component({
   selector: 'app-todo-card',
@@ -9,12 +13,16 @@ import {TodoInfoComponent} from '../todo-info/todo-info.component';
   styleUrls: ['./todo-card.component.scss']
 })
 export class TodoCardComponent implements OnInit {
-
   @Input() todo: Todo;
+  assignedUser: User;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+              private store: Store<any>) { }
 
   ngOnInit() {
+    this.store.pipe(select(fromUser.selectUserById(this.todo.assigneeId))).subscribe(user => {
+      this.assignedUser = user;
+    });
   }
 
   getColorByStatus(): string {
