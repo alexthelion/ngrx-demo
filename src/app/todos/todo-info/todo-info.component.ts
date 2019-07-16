@@ -1,18 +1,17 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA, MatChipInputEvent, MatDialogRef} from '@angular/material';
-import {User} from '../../users/store/user.model';
+import {User} from '../../models/user.model';
 import {select, Store} from '@ngrx/store';
-import * as fromUser from '../../users/store/user.selectors';
-import * as todoActions from '../store/todo.actions';
-import {Todo} from '../store/todo.model';
+import * as fromUser from '../../root-store/users/user.selectors';
+import * as todoActions from '../../root-store/todos/todo.actions';
+import {Todo} from '../../todo.model';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Label} from '../store/label.model';
+import {Label} from '../../models/label.model';
 
 @Component({
   selector: 'app-todo-info',
   templateUrl: './todo-info.component.html',
-  styleUrls: ['./todo-info.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./todo-info.component.scss']
 })
 export class TodoInfoComponent implements OnInit {
   selectedStatus = '';

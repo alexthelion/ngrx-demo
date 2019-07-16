@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Todo} from '../store/todo.model';
+import {Todo} from '../../todo.model';
 import {MatDialog} from '@angular/material';
 import {TodoInfoComponent} from '../todo-info/todo-info.component';
-import * as fromUser from '../../users/store/user.selectors';
+import * as fromUser from '../../root-store/users/user.selectors';
 import {select, Store} from '@ngrx/store';
-import {User} from '../../users/store/user.model';
+import {User} from '../../models/user.model';
 
 @Component({
   selector: 'app-todo-card',

@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 
-import { Todo } from './todo.model';
+import { Todo } from '../../todo.model';
 
 export const loadTodos = createAction(
   '[Todo/API] Load Todos', 

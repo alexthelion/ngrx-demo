@@ -1,6 +1,6 @@
 import {Action, createReducer, on} from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
-import {Todo} from './todo.model';
+import {Todo} from '../../todo.model';
 import * as TodoActions from './todo.actions';
 
 export interface TodoState extends EntityState<Todo> {

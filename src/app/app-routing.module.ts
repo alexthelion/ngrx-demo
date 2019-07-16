@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {UsersComponent} from './users/users.component';
-import {Todo} from './todos/store/todo.model';
+import {Todo} from './todo.model';
 import {TodosComponent} from './todos/todos.component';
 
 

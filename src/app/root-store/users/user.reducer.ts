@@ -1,6 +1,6 @@
 import {Action, createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
-import {User} from './user.model';
+import {User} from '../../models/user.model';
 import * as UserActions from './user.actions';
 
 export interface UserState extends EntityState<User> {

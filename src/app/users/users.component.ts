@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import * as userActions from './store/user.actions';
-import * as fromUser from '../users/store/user.selectors';
-import {User} from './store/user.model';
+import * as userActions from '../root-store/users/user.actions';
+import * as fromUser from '../root-store/users/user.selectors';
+import {User} from '../models/user.model';
 import {Observable} from 'rxjs';
-import {DialogComponent} from '../dialog/dialog.component';
+import {DialogComponent} from './dialog/dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
