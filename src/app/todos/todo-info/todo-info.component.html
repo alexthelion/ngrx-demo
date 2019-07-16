@@ -1,0 +1,53 @@
+<div class="container">
+  <h4 class="text-center">Edit todo #{{data.todo.id}}</h4>
+  <div class="md-form">
+
+    <div class="row mt-3">
+      <div class="form-group col-md-12 p-0 m-0">
+        <input mdbInput type="text" id="title" class="form-control" [(ngModel)]="data.todo.title">
+        <label for="title">Title</label>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="form-group col-md-12 p-0 m-0">
+        <textarea mdbInput type="text" id="description" class="md-textarea form-control"
+                  [(ngModel)]="data.todo.description"></textarea>
+        <label for="description">Description</label>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="form-group col-md-12 p-0 m-0">
+        <mat-form-field>
+          <mat-label>Select an assignee</mat-label>
+          <mat-select [(value)]="selectedUser">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let user of users" value="user.id">{{user.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="form-group col-md-12 p-0 m-0">
+        <mat-form-field>
+          <mat-label>Select status</mat-label>
+          <mat-select [(value)]="selectedStatus">
+            <mat-option>None</mat-option>
+            <mat-option value="backlog">Backlog</mat-option>
+            <mat-option value="open">Open</mat-option>
+            <mat-option value="in_progress">In Progress</mat-option>
+            <mat-option value="done">Done</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <button type="button" mdbBtn color="success" mdbWavesEffect>Save</button>
+      <button type="button" mdbBtn color="primary" mdbWavesEffect>Cancel</button>
+    </div>
+
+  </div>
+</div>

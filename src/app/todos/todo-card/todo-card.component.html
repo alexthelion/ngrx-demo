@@ -1,9 +1,13 @@
-<mdb-card class="mt-3 mb-3" [ngClass]="getTextColorByStatus()" [bgColor]="getColorByStatus()" style="max-width: 20rem">
+<mdb-card class="mt-3 mb-3 hover-style"
+          [ngClass]="getTextColorByStatus()"
+          [bgColor]="getColorByStatus()"
+          (click)="openInfoDialog()"
+          style="max-width: 20rem">
   <mdb-card-header>{{todo.title}}</mdb-card-header>
   <mdb-card-body>
-    <mdb-card-title>
-      <h5>{{todo.assigneeId}}</h5>
-    </mdb-card-title>
+    <p *ngIf="!!todo.assigneeId">Alex shimanski <mdb-icon fas icon="user-ninja" size="1x" class="pl-1" aria-hidden="true"></mdb-icon></p>
+    <p *ngIf="!!!todo.assigneeId">Unassigned <mdb-icon fas icon="user" size="1x" class="pl-1" aria-hidden="true"></mdb-icon></p>
+    <hr>
     <div [ngClass]="getTextColorByStatus()">
       {{todo.description}}
     </div>

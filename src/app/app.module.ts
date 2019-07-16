@@ -20,9 +20,11 @@ import {
 } from 'angular-bootstrap-md';
 import { TodosComponent } from './todos/todos.component';
 import { DialogComponent } from './dialog/dialog.component';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatSelectModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { TodoCardComponent } from './todos/todo-card/todo-card.component';
+import { TodoInfoComponent } from './todos/todo-info/todo-info.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { TodoCardComponent } from './todos/todo-card/todo-card.component';
     NavbarComponent,
     TodosComponent,
     DialogComponent,
-    TodoCardComponent
+    TodoCardComponent,
+    TodoInfoComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -44,6 +47,9 @@ import { TodoCardComponent } from './todos/todo-card/todo-card.component';
     WavesModule,
     InputsModule,
     ButtonsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -59,6 +65,6 @@ import { TodoCardComponent } from './todos/todo-card/todo-card.component';
     { provide: MAT_DIALOG_DATA, useValue: {} }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  entryComponents: [DialogComponent, TodoInfoComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Todo} from '../store/todo.model';
+import {MatDialog} from '@angular/material';
+import {TodoInfoComponent} from '../todo-info/todo-info.component';
 
 @Component({
   selector: 'app-todo-card',
@@ -10,7 +12,7 @@ export class TodoCardComponent implements OnInit {
 
   @Input() todo: Todo;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -38,4 +40,10 @@ export class TodoCardComponent implements OnInit {
     return 'text-white';
   }
 
+  openInfoDialog(): void {
+    const dialogRef = this.dialog.open(TodoInfoComponent, {
+      width: '400px',
+      data: {todo: this.todo}
+    });
+  }
 }

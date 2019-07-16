@@ -15,7 +15,6 @@ import {MatDialog} from '@angular/material/dialog';
 export class UsersComponent implements OnInit {
   editField: string;
   userList$: Observable<Array<User>>;
-  @ViewChild('removeDialog', {static: false}) removeDialogComponent: DialogComponent;
 
   constructor(private store: Store<any>,
               public dialog: MatDialog) {
