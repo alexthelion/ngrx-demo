@@ -24,8 +24,7 @@ export class TodoInfoComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  labels: Label[] = [
-  ];
+  labels: Array<Label> = [];
 
   constructor(public dialogRef: MatDialogRef<any>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -39,6 +38,7 @@ export class TodoInfoComponent implements OnInit {
     this.title = this.data.todo.title;
     this.description = this.data.todo.description;
     this.selectedStatus = this.data.todo.status;
+    this.labels = this.data.todo.labels.slice(0);
   }
 
   save(): void {
@@ -47,7 +47,8 @@ export class TodoInfoComponent implements OnInit {
       title: this.title,
       description: this.description,
       assigneeId: !!this.selectedUser ? this.selectedUser.id : '',
-      status: this.selectedStatus
+      status: this.selectedStatus,
+      labels: this.labels
     };
     this.store.dispatch(todoActions.upsertTodo({todo: updatedTodo}));
     this.dialogRef.close();
@@ -57,7 +58,7 @@ export class TodoInfoComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  add(event: MatChipInputEvent): void {
+  addLabel(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
@@ -72,7 +73,7 @@ export class TodoInfoComponent implements OnInit {
     }
   }
 
-  remove(label: Label): void {
+  removeLabel(label: Label): void {
     const index = this.labels.indexOf(label);
 
     if (index >= 0) {

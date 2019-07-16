@@ -11,5 +11,11 @@
     <div [ngClass]="getTextColorByStatus()">
       {{todo.description}}
     </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-auto" *ngFor="let label of todo.labels">
+        <mdb-badge pill="true" default="true">{{label.title}}</mdb-badge>
+      </div>
+    </div>
   </mdb-card-body>
 </mdb-card>

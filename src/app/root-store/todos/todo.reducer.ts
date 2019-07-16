@@ -13,8 +13,8 @@ export const initialState: TodoState = adapter.getInitialState({
   // additional entity state properties
   ids: [1, 2],
   entities: {
-    1: {id: 1, title: 'Create login screen', description: 'Use jwt for login screen', assigneeId: '', status: 'backlog'},
-    2: {id: 2, title: 'Create help screen', description: 'Implement generic help screen, which could open from any other screen', assigneeId: '', status: 'open'},
+    1: {id: 1, title: 'Create login screen', description: 'Use jwt for login screen', assigneeId: '', status: 'backlog', labels: []},
+    2: {id: 2, title: 'Create help screen', description: 'Implement generic help screen, which could open from any other screen', assigneeId: '', status: 'open', labels: [{title: 'Help'}]},
   }
 });
 
