@@ -55,12 +55,16 @@
         </mdb-card-body>
       </mdb-card>
     </div>
-    <ngx-fab
-      (click)="openTodoCreationDialog()"
-      [iconClass]="'fas fa-plus'"
-      [position]="'bottom-right'"></ngx-fab>
-
   </div>
 
 </div>
 
+<div class="fab-container">
+  <eco-fab-speed-dial>
+    <eco-fab-speed-dial-trigger>
+      <button mat-fab (click)="openTodoCreationDialog()">
+        <mdb-icon fas icon="plus"></mdb-icon>
+      </button>
+    </eco-fab-speed-dial-trigger>
+  </eco-fab-speed-dial>
+</div>

@@ -5,7 +5,7 @@ import {TodosComponent} from './todos.component';
 import {TodoCardComponent} from './todo-card/todo-card.component';
 import {TodoInfoComponent} from './todo-info/todo-info.component';
 import {SharedModule} from '../shared/shared.module';
-import {NgxFabModule} from 'ngx-fab';
+import {EcoFabSpeedDialModule} from '@ecodev/fab-speed-dial';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import {NgxFabModule} from 'ngx-fab';
     MatSelectModule,
     MatChipsModule,
     MatIconModule,
-    NgxFabModule
+    MatButtonModule,
+    EcoFabSpeedDialModule
   ],
   exports: [TodosComponent]
 })
