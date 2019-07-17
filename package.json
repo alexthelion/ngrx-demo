@@ -27,6 +27,7 @@
     "@ngrx/entity": "^8.1.0",
     "@ngrx/store": "^8.1.0",
     "@ngrx/store-devtools": "^8.1.0",
+    "@ngx-pwa/local-storage": "^8.0.2",
     "@types/chart.js": "^2.7.55",
     "angular-bootstrap-md": "^8.0.0",
     "animate.css": "^3.7.2",
