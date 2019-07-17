@@ -5,6 +5,7 @@ import {TodosComponent} from './todos.component';
 import {TodoCardComponent} from './todo-card/todo-card.component';
 import {TodoInfoComponent} from './todo-info/todo-info.component';
 import {SharedModule} from '../shared/shared.module';
+import {NgxFabModule} from 'ngx-fab';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {SharedModule} from '../shared/shared.module';
     MatSelectModule,
     MatChipsModule,
     MatIconModule,
-    MatButtonModule
+    NgxFabModule
   ],
   exports: [TodosComponent]
 })

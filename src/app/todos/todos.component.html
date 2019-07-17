@@ -3,7 +3,7 @@
     <h1>Todos Board</h1>
   </div>
 
-  <div class="row mt-3">
+  <div class="row mt-3 mb-3 pb-3" style="min-height: 75vh">
     <div class="col-md-3">
       <mdb-card>
         <mdb-card-body>
@@ -55,11 +55,12 @@
         </mdb-card-body>
       </mdb-card>
     </div>
+    <ngx-fab
+      (click)="openTodoCreationDialog()"
+      [iconClass]="'fas fa-plus'"
+      [position]="'bottom-right'"></ngx-fab>
+
   </div>
 
-  <button mat-fab color="primary" class="float-right"
-          id="add-button" (click)="openTodoCreationDialog()">
-    <mdb-icon fas icon="plus"></mdb-icon>
-  </button>
-
 </div>
+

@@ -1,9 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Todo} from '../models/todo.model';
 import * as fromTodos from '../root-store/todos/todo.selectors';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {TodoInfoComponent} from './todo-info/todo-info.component';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Action, createReducer, on} from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
-import {Todo} from '../../models/todo.model';
+import {BACKLOG, DONE, IN_PROGRESS, OPEN, Todo} from '../../models/todo.model';
 import * as TodoActions from './todo.actions';
 
 export interface TodoState extends EntityState<Todo> {
@@ -11,10 +11,14 @@ export const adapter: EntityAdapter<Todo> = createEntityAdapter<Todo>();
 
 export const initialState: TodoState = adapter.getInitialState({
   // additional entity state properties
-  ids: [1, 2],
+  ids: [1, 2, 3, 4, 5, 6],
   entities: {
-    1: {id: 1, title: 'Create login screen', description: 'Use jwt for login screen', assigneeId: '', status: 'backlog', labels: []},
-    2: {id: 2, title: 'Create help screen', description: 'Implement generic help screen, which could open from any other screen', assigneeId: '', status: 'open', labels: [{title: 'Help'}]},
+    1: {id: 1, title: 'Create login screen', description: 'Use jwt for login screen', assigneeId: '', status: BACKLOG, labels: []},
+    2: {id: 2, title: 'Create help screen', description: 'Implement generic help screen, which could be open from any other screen', assigneeId: '', status: 'open', labels: [{title: 'Help'}]},
+    3: {id: 3, title: 'Fix bug #3445', description: '', assigneeId: '1', status: DONE, labels: [{title: 'Bug'}, {title: 'Major'}]},
+    4: {id: 4, title: 'Fix bug #3446', description: '', assigneeId: '1', status: DONE, labels: []},
+    5: {id: 5, title: 'Fix bug #3447', description: '', assigneeId: '1', status: DONE, labels: []},
+    6: {id: 6, title: 'Fix bug #3442', description: '', assigneeId: '2', status: IN_PROGRESS, labels: []},
   }
 });
 
