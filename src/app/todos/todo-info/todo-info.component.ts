@@ -7,6 +7,7 @@ import * as todoActions from '../../root-store/todos/todo.actions';
 import {Todo} from '../../models/todo.model';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Label} from '../../models/label.model';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-todo-info',
@@ -38,12 +39,12 @@ export class TodoInfoComponent implements OnInit {
     this.title = this.data.todo.title;
     this.description = this.data.todo.description;
     this.selectedStatus = this.data.todo.status;
-    this.labels = this.data.todo.labels.slice(0);
+    this.labels = !!this.data.todo.labels ? this.data.todo.labels.slice(0) : [];
   }
 
   save(): void {
     const updatedTodo: Todo = {
-      id: this.data.todo.id,
+      id: !!this.data.todo.id ? this.data.todo.id : uuid(),
       title: this.title,
       description: this.description,
       assigneeId: !!this.selectedUser ? this.selectedUser.id : '',

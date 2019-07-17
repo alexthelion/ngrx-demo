@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Todo} from '../models/todo.model';
 import * as fromTodos from '../root-store/todos/todo.selectors';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {TodoInfoComponent} from './todo-info/todo-info.component';
 
 @Component({
   selector: 'app-todos',
@@ -15,7 +17,8 @@ export class TodosComponent implements OnInit {
   todosInProgress$: Observable<Array<Todo>>;
   todosDone$: Observable<Array<Todo>>;
 
-  constructor(private store: Store<any>) { }
+  constructor(private store: Store<any>,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
   this.todosBacklog$ = this.store.pipe(select(fromTodos.selectAllBacklogTodos));
@@ -25,7 +28,10 @@ export class TodosComponent implements OnInit {
 }
 
   openTodoCreationDialog(): void {
-
+    const dialogRef = this.dialog.open(TodoInfoComponent, {
+      width: '800px',
+      data: {isNew: true, todo: {title: '', description: ''}}
+    });
   }
 
 }

@@ -50,7 +50,7 @@ export class TodoCardComponent implements OnInit {
   openInfoDialog(): void {
     const dialogRef = this.dialog.open(TodoInfoComponent, {
       width: '800px',
-      data: {todo: this.todo}
+      data: {isNew: false, todo: this.todo}
     });
   }
 }
