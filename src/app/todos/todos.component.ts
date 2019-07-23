@@ -5,6 +5,7 @@ import {Todo} from '../models/todo.model';
 import * as fromTodos from '../root-store/todos/todo.selectors';
 import {MatDialog} from '@angular/material';
 import {TodoInfoComponent} from './todo-info/todo-info.component';
+import {AppState} from '../root-store';
 
 @Component({
   selector: 'app-todos',
@@ -17,7 +18,7 @@ export class TodosComponent implements OnInit {
   todosInProgress$: Observable<Array<Todo>>;
   todosDone$: Observable<Array<Todo>>;
 
-  constructor(private store: Store<any>,
+  constructor(private store: Store<AppState>,
               public dialog: MatDialog) { }
 
   ngOnInit() {

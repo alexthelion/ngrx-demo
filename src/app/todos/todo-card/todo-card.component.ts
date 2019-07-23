@@ -5,6 +5,7 @@ import {TodoInfoComponent} from '../todo-info/todo-info.component';
 import * as fromUser from '../../root-store/users/user.selectors';
 import {select, Store} from '@ngrx/store';
 import {User} from '../../models/user.model';
+import {AppState} from '../../root-store';
 
 @Component({
   selector: 'app-todo-card',
@@ -16,7 +17,7 @@ export class TodoCardComponent implements OnInit {
   assignedUser: User;
 
   constructor(public dialog: MatDialog,
-              private store: Store<any>) { }
+              private store: Store<AppState>) { }
 
   ngOnInit() {
     this.store.pipe(select(fromUser.selectUserById(this.todo.assigneeId))).subscribe(user => {

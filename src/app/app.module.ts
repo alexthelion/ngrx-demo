@@ -4,13 +4,16 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {DialogComponent} from './users/dialog/dialog.component';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TodoInfoComponent} from './todos/todo-info/todo-info.component';
 import {RootStoreModule} from './root-store/root-store.module';
 import {UsersModule} from './users/users.module';
 import {TodosModule} from './todos/todos.module';
 import {SharedModule} from './shared/shared.module';
+import {StorageModule} from '@ngx-pwa/local-storage';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {fakeBackendProvider} from './services/fake-backend.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,11 +27,17 @@ import {SharedModule} from './shared/shared.module';
     RootStoreModule,
     SharedModule,
     UsersModule,
-    TodosModule
+    TodosModule,
+    StorageModule.forRoot({
+      IDBNoWrap: true,
+    })
   ],
   providers: [
     { provide: MatDialogRef, useValue: {} },
-    { provide: MAT_DIALOG_DATA, useValue: {} }
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+
+    // provider used to create fake backend
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent, TodoInfoComponent]

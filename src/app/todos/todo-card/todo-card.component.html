@@ -8,7 +8,7 @@
     <p *ngIf="!!todo.assigneeId">{{assignedUser.name}} <mdb-icon fas icon="user-ninja" size="1x" class="pl-1" aria-hidden="true"></mdb-icon></p>
     <p *ngIf="!!!todo.assigneeId">Unassigned <mdb-icon fas icon="user" size="1x" class="pl-1" aria-hidden="true"></mdb-icon></p>
     <hr>
-    <div [ngClass]="getTextColorByStatus()">
+    <div class="todo-description" [ngClass]="getTextColorByStatus()">
       {{todo.description}}
     </div>
     <hr>

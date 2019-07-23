@@ -8,6 +8,7 @@ import {Todo} from '../../models/todo.model';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Label} from '../../models/label.model';
 import { v4 as uuid } from 'uuid';
+import {AppState} from '../../root-store';
 
 @Component({
   selector: 'app-todo-info',
@@ -29,7 +30,7 @@ export class TodoInfoComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<any>,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              private store: Store<any>) { }
+              private store: Store<AppState>) { }
 
   ngOnInit() {
     this.store.pipe(select(fromUser.selectAllUsers)).subscribe(users => {

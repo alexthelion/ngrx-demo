@@ -1,7 +1,8 @@
-import {Action, createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
-import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
+import {Action, createReducer, on} from '@ngrx/store';
+import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import {User} from '../../models/user.model';
 import * as UserActions from './user.actions';
+import * as RootActions from '../root-store.actions';
 
 export interface UserState extends EntityState<User> {
   // additional entities state properties
@@ -51,6 +52,10 @@ const userReducer = createReducer(
   on(UserActions.clearUsers,
     state => adapter.removeAll(state)
   ),
+  on(RootActions.rehydrate, state => {
+    console.log('init action in users');
+    return state;
+  })
 );
 
 export function reducer(state: UserState | undefined, action: Action) {

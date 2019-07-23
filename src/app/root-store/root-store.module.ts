@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {StoreModule} from '@ngrx/store';
 import {metaReducers, reducers} from './index';
 import {environment} from '../../environments/environment';

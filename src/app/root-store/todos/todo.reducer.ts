@@ -2,6 +2,7 @@ import {Action, createReducer, on} from '@ngrx/store';
 import {EntityState, EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 import {BACKLOG, DONE, IN_PROGRESS, OPEN, Todo} from '../../models/todo.model';
 import * as TodoActions from './todo.actions';
+import * as RootActions from '../root-store.actions';
 
 export interface TodoState extends EntityState<Todo> {
   // additional entities state properties
@@ -54,6 +55,10 @@ const todoReducer = createReducer(
   on(TodoActions.clearTodos,
     state => adapter.removeAll(state)
   ),
+  on(RootActions.rehydrate, state => {
+    console.log('init action in todos');
+    return state;
+  })
 );
 
 export function reducer(state: TodoState | undefined, action: Action) {
