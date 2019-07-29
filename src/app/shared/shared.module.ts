@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {
   ButtonsModule,
   IconsModule,
@@ -10,7 +10,6 @@ import {
   WavesModule
 } from 'angular-bootstrap-md';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 
 @NgModule({
   declarations: [],
@@ -31,4 +30,5 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule]
 })
-export class SharedModule { }
+export class SharedModule {
+}

@@ -1,0 +1,82 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-md-2">
+      <mat-card class="example-card mt-5" [ngClass]="{'disabled-card': isAnyEventSelected()}">
+        <mat-card-header>
+          <mat-card-title><h6>Labels</h6></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-12" *ngFor="let label of labels">
+              <div class="labels" [ngClass]="{'disabled-labels': isAnyEventSelected()}">
+                <mdb-badge color="red">{{label.desc}}</mdb-badge>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="btn-group">
+            <div class="btn btn-primary"
+                 mwlCalendarPreviousView
+                 [view]="'day'"
+                 [(viewDate)]="viewDate">
+              Previous
+            </div>
+            <div class="btn btn-outline-secondary"
+                 mwlCalendarToday
+                 [(viewDate)]="viewDate">
+              Today
+            </div>
+            <div class="btn btn-primary"
+                 mwlCalendarNextView
+                 [view]="'day'"
+                 [(viewDate)]="viewDate">
+              Next
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-right">
+          <h3>{{ viewDate | calendarDate:('dayViewTitle') }}</h3>
+        </div>
+      </div>
+      <br/>
+
+      <mwl-calendar-day-view
+        [viewDate]="viewDate"
+        [eventTemplate]="demo"
+        [events]="events"
+        [refresh]="refresh"
+        (eventTimesChanged)="eventTimesChanged($event)"
+        [hourSegments]="6">
+      </mwl-calendar-day-view>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #demo
+             let-dayEvent="dayEvent"
+             let-tooltipPlacement="tooltipPlacement"
+             let-eventClicked="eventClicked"
+             let-tooltipTemplate="tooltipTemplate"
+             let-tooltipAppendToBody="tooltipAppendToBody"
+             let-tooltipDelay="tooltipDelay">
+  <div style="min-width: 250px; min-height: 150px;"
+       [style.marginLeft.px]="dayEvent.left + 70"
+       (click)="select(dayEvent)">
+    <mat-card class="example-card"
+              [style.min-height.px]="80"
+              [style.height.px]="dayEvent.height">
+      <mat-card-header [ngClass]="{'selected': isSelected(dayEvent)}">
+        <mat-card-title><h6>{{dayEvent.event.title}}</h6></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mdb-badge *ngFor="let label of dayEvent.event.meta.labels" color="red">{{label.desc}}</mdb-badge>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

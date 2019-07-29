@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {UsersComponent} from './users/users.component';
 import {Todo} from './models/todo.model';
 import {TodosComponent} from './todos/todos.component';
+import {CalendarComponent} from './calendar/calendar.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,11 @@ const routes: Routes = [
     path: 'users',
     component: UsersComponent,
     data: { title: 'Users List' }
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent,
+    data: { title: 'Calendar' }
   },
   { path: '',
     redirectTo: '/todos',

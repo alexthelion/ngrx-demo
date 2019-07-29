@@ -4,7 +4,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {DialogComponent} from './users/dialog/dialog.component';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatCardModule, MatDialogRef} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TodoInfoComponent} from './todos/todo-info/todo-info.component';
 import {RootStoreModule} from './root-store/root-store.module';
@@ -12,13 +12,16 @@ import {UsersModule} from './users/users.module';
 import {TodosModule} from './todos/todos.module';
 import {SharedModule} from './shared/shared.module';
 import {StorageModule} from '@ngx-pwa/local-storage';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {fakeBackendProvider} from './services/fake-backend.interceptor';
+import {CalendarComponent} from './calendar/calendar.component';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -28,6 +31,11 @@ import {fakeBackendProvider} from './services/fake-backend.interceptor';
     SharedModule,
     UsersModule,
     TodosModule,
+    MatCardModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
     StorageModule.forRoot({
       IDBNoWrap: true,
     })

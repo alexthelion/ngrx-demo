@@ -1,0 +1,16 @@
+.labels {
+  cursor: grab;
+}
+
+.selected {
+  background: aqua;
+}
+
+.disabled-card {
+  background: whitesmoke;
+}
+
+.disabled-labels {
+  pointer-events: none !important;
+  cursor: help !important;
+}
