@@ -50,10 +50,10 @@
         [eventTemplate]="demo"
         [events]="events"
         [refresh]="refresh"
+        [eventWidth]="250"
         (eventTimesChanged)="eventTimesChanged($event)"
-        [hourSegments]="6">
+        [hourSegments]="4">
       </mwl-calendar-day-view>
-
     </div>
   </div>
 </div>
@@ -65,16 +65,14 @@
              let-tooltipTemplate="tooltipTemplate"
              let-tooltipAppendToBody="tooltipAppendToBody"
              let-tooltipDelay="tooltipDelay">
-  <div style="min-width: 250px; min-height: 150px;"
-       [style.marginLeft.px]="dayEvent.left + 70"
-       (click)="select(dayEvent)">
+  <div (click)="select(dayEvent)" class="col-md-12">
     <mat-card class="example-card"
-              [style.min-height.px]="80"
+              [ngClass]="{'selected': isSelected(dayEvent)}"
               [style.height.px]="dayEvent.height">
-      <mat-card-header [ngClass]="{'selected': isSelected(dayEvent)}">
-        <mat-card-title><h6>{{dayEvent.event.title}}</h6></mat-card-title>
+      <mat-card-header style="margin: 0 !important;">
+        <mat-card-title><div style="font-size: 14px">{{dayEvent.event.title}}</div></mat-card-title>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content *ngIf="dayEvent.height > 80">
         <mdb-badge *ngFor="let label of dayEvent.event.meta.labels" color="red">{{label.desc}}</mdb-badge>
       </mat-card-content>
     </mat-card>
