@@ -3,7 +3,8 @@ import {CalendarEvent, CalendarEventTimesChangedEvent} from 'angular-calendar';
 import {DayViewEvent} from 'calendar-utils';
 import {Subject} from 'rxjs';
 import {EventService} from '../services/event.service';
-
+import {MatDialog} from '@angular/material';
+import {EventInfoComponent} from './event-info/event-info.component';
 
 @Component({
   selector: 'app-calendar',
@@ -28,7 +29,8 @@ export class CalendarComponent {
   refresh: Subject<any> = new Subject();
   events: CalendarEvent[] = [];
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService,
+              private dialog: MatDialog) {
     this.events = eventService.getEvents();
   }
 
@@ -52,7 +54,17 @@ export class CalendarComponent {
     dayEvent.event.meta.isSelected = !dayEvent.event.meta.isSelected;
   }
 
-  isAnyEventSelected(): boolean {
-    return !this.events.some(value => value.meta.isSelected);
+  deleteEvent(dayEvent: CalendarEvent) {
+    this.eventService.deleteEvent(dayEvent);
+    this.refresh.next();
+  }
+
+  openEventInfoDialog(dayEvent: CalendarEvent) {
+    this.dialog.open(EventInfoComponent, {
+      width: '800px',
+      data: {event: dayEvent}
+    }).afterClosed().subscribe(value => {
+      this.refresh.next();
+    });
   }
 }

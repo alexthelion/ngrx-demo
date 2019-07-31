@@ -1,42 +1,28 @@
 <div class="container-fluid mt-3">
   <div class="row">
-    <div class="col-md-2">
-      <mat-card class="example-card mt-5" [ngClass]="{'disabled-card': isAnyEventSelected()}">
-        <mat-card-header>
-          <mat-card-title><h6>Labels</h6></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="row">
-            <div class="col-12" *ngFor="let label of labels">
-              <div class="labels" [ngClass]="{'disabled-labels': isAnyEventSelected()}">
-                <mdb-badge color="red">{{label.desc}}</mdb-badge>
-              </div>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <div class="col-md-10">
+    <div class="col-md-12">
       <div class="row">
         <div class="col-md-6">
           <div class="btn-group">
-            <div class="btn btn-primary"
-                 mwlCalendarPreviousView
-                 [view]="'day'"
-                 [(viewDate)]="viewDate">
+            <button mdbBtn color="primary"
+                    mwlCalendarPreviousView
+                    outline="true"
+                    [view]="'day'"
+                    [(viewDate)]="viewDate">
               Previous
-            </div>
-            <div class="btn btn-outline-secondary"
-                 mwlCalendarToday
-                 [(viewDate)]="viewDate">
+            </button>
+            <button mdbBtn color="primary"
+                    mwlCalendarToday
+                    [(viewDate)]="viewDate">
               Today
-            </div>
-            <div class="btn btn-primary"
-                 mwlCalendarNextView
-                 [view]="'day'"
-                 [(viewDate)]="viewDate">
+            </button>
+            <button mdbBtn color="primary"
+                    outline="true"
+                    mwlCalendarNextView
+                    [view]="'day'"
+                    [(viewDate)]="viewDate">
               Next
-            </div>
+            </button>
           </div>
         </div>
         <div class="col-md-6 text-right">
@@ -70,11 +56,25 @@
               [ngClass]="{'selected': isSelected(dayEvent)}"
               [style.height.px]="dayEvent.height">
       <mat-card-header style="margin: 0 !important;">
-        <mat-card-title><div style="font-size: 14px">{{dayEvent.event.title}}</div></mat-card-title>
+        <mat-card-title>
+          <div style="font-size: 14px">{{dayEvent.event.title}}</div>
+        </mat-card-title>
       </mat-card-header>
       <mat-card-content *ngIf="dayEvent.height > 80">
         <mdb-badge *ngFor="let label of dayEvent.event.meta.labels" color="red">{{label.desc}}</mdb-badge>
       </mat-card-content>
     </mat-card>
+    <div class="row" *ngIf="dayEvent.event.meta.isSelected">
+      <div class="col-md-4">
+        <button type="button" mdbBtn color="primary" mdbWavesEffect size="sm" (click)="openEventInfoDialog(dayEvent)">
+          <mdb-icon fas icon="edit"></mdb-icon>
+        </button>
+      </div>
+      <div class="col-md-4">
+        <button type="button" mdbBtn color="danger" mdbWavesEffect size="sm" (click)="deleteEvent(dayEvent)">
+          <mdb-icon fas icon="trash"></mdb-icon>
+        </button>
+      </div>
+    </div>
   </div>
 </ng-template>
