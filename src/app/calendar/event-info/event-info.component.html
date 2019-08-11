@@ -1,0 +1,24 @@
+<div class="container">
+  <h4 class="text-center" *ngIf="true">Edit event</h4>
+  <h4 class="text-center" *ngIf="false">Create event</h4>
+  <div class="md-form">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row mt-3">
+          <div class="form-group col-md-12 p-0 m-0">
+            <input mdbInput type="text" id="title" class="form-control" [(ngModel)]="title">
+            <label for="title">Title</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="text-center">
+        <button type="button" mdbBtn color="success" mdbWavesEffect (click)="save()">Save</button>
+        <button type="button" mdbBtn color="primary" mdbWavesEffect (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
